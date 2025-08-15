@@ -36,6 +36,38 @@
       background-size: 40px 40px;
       animation: bg-pan 15s linear infinite;
     }
+
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-color);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: var(--primary-neon);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+    }
+
+    .spinner {
+      border: 8px solid rgba(0, 255, 255, 0.3);
+      border-top: 8px solid var(--primary-neon);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
     
     @keyframes bg-pan {
       from { background-position: 0 0; }
@@ -369,7 +401,54 @@
   </style>
 </head>
 <body>
-
+  <div id="loading-screen">
+    <div class="spinner"></div>
+    <p>LOADING...</p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bgmAudio');
+      const btn = document.getElementById('playBGM');
+  
+      // ファイル名にスペースや全角文字がある場合の安全策
+      const sourceEl = audio.querySelector('source');
+      if (sourceEl && sourceEl.getAttribute('data-encoded') !== '1') {
+        const raw = sourceEl.getAttribute('src');
+        sourceEl.setAttribute('src', encodeURI(raw));
+        sourceEl.setAttribute('data-encoded', '1');
+        // src を更新したので、明示的にロード
+        audio.load();
+      }
+  
+      const setLabel = () => {
+        btn.textContent = audio.paused ? 'BGMを再生' : 'BGMを停止';
+      };
+  
+      btn.addEventListener('click', async () => {
+        try {
+          if (audio.paused) {
+            await audio.play();       // ユーザー操作内での再生
+          } else {
+            audio.pause();
+          }
+        } catch (err) {
+          console.error(err);
+          alert('再生がブロックされました。端末の消音スイッチや音量設定をご確認ください。');
+        } finally {
+          setLabel();
+        }
+      });
+  
+      // 再生終了時にボタン表示を戻す（loop外した場合の保険）
+      audio.addEventListener('ended', setLabel);
+  
+      setLabel();
+    });
+  </script>  
+  <audio id="bgmAudio" loop preload="metadata" playsinline>
+    <source src="assets/虹のドリフト (Remix).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>  
   <!-- Hero Section -->
   <header class="hero">
     <div class="hero-content">
@@ -379,7 +458,8 @@
         <h1 class="line3">2025</h1>
       </div>
       <p>未来のゲームクリエイター、集え。<br>枚方から始まる、新たな創造の物語。</p>
-      <a href="#entry" class="btn">ENTRY NOW</a>
+      <a href="#entry" class="btn">今すぐ申し込む</a>
+      <button id="playBGM" class="btn" style="margin-top: 1rem;">BGMを再生</button>
     </div>
   </header>
 
@@ -487,7 +567,7 @@
     <div class="container">
       <h2>君の挑戦を待っている！</h2>
       <p>募集するのは、ゲームが大好きな小学3年生から中学3年生までの君！パソコンで動くゲームはもちろん、友達とすぐに遊べるカードゲームやボードゲーム作りに挑戦したい君の応募を待ってるよ。人気だから、急いで応募してね！</p>
-      <a href="https://forms.google.com" class="btn" target="_blank">今すぐ申し込む</a>
+      <a href="#entry" class="btn">今すぐ申し込む</a>
     </div>
   </section>
 
@@ -495,7 +575,7 @@
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 探究塾ぱ〜ぱす / HIRAKATA JUNIOR GAME SHOW. All rights reserved.</p>
-      <p>CONTACT: info@tankyu-paps.jp</p>
+      <p>CONTACT: tkpurpose04@gmail.com</p>
     </div>
   </footer>
 
