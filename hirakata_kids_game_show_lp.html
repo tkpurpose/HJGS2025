@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIRAKATA JUNIOR GAME SHOW 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0a0a1a;
+      --primary-neon: #00ffff;
+      --secondary-neon: #ff00ff;
+      --accent-yellow: #f0ff00;
+      --text-light: #ffffff;
+      --text-muted: #cccccc;
+      --border-color: rgba(0, 255, 255, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-light);
+      line-height: 1.8;
+      overflow-x: hidden;
+      background-image: 
+        linear-gradient(var(--border-color) 1px, transparent 1px),
+        linear-gradient(to right, var(--border-color) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: bg-pan 15s linear infinite;
+    }
+    
+    @keyframes bg-pan {
+      from { background-position: 0 0; }
+      to { background-position: -40px -40px; }
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--primary-neon); }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes text-focus-in {
+      0% {
+        filter: blur(12px);
+        opacity: 0;
+      }
+      100% {
+        filter: blur(0px);
+        opacity: 1;
+      }
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    a {
+      color: var(--primary-neon);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--secondary-neon);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem;
+      position: relative;
+      overflow: hidden;
+      background-image: url('assets/Hero_image.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(10, 10, 26, 0.4) 0%, var(--bg-color) 75%);
+      z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h1-container h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      color: var(--text-light);
+      text-shadow: 
+        0 0 5px var(--primary-neon),
+        0 0 10px var(--primary-neon),
+        0 0 20px var(--primary-neon),
+        0 0 40px var(--secondary-neon);
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      border-right: .1em solid var(--primary-neon);
+      margin: 0.2em auto;
+    }
+
+    .h1-container .line1 {
+      animation: typing 1s steps(8, end) 0.5s forwards, blink-caret .75s step-end 8 forwards;
+    }
+    .h1-container .line2 {
+      animation: typing 1.5s steps(17, end) 2s forwards, blink-caret .75s step-end 10 forwards;
+    }
+    .h1-container .line3 {
+      animation: typing 0.8s steps(4, end) 4s forwards, blink-caret .75s step-end 8 forwards;
+    }
+
+    .hero p {
+      font-size: 1.8rem; /* Increased font size */
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 5.5s forwards;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      background-color: transparent;
+      color: var(--primary-neon);
+      padding: 0.8rem 2.5rem;
+      border: 2px solid var(--primary-neon);
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px var(--primary-neon), inset 0 0 10px var(--primary-neon);
+    }
+
+    .hero .btn {
+      opacity: 0;
+      animation: fade-in 1s ease-out 6s forwards;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-neon);
+      color: var(--bg-color);
+      box-shadow: 0 0 20px var(--primary-neon), inset 0 0 5px var(--primary-neon);
+    }
+
+    /* --- Section --- */
+    .section {
+      padding: 6rem 0;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      color: var(--primary-neon);
+      text-shadow: 0 0 10px var(--primary-neon);
+    }
+
+    /* --- Cards Layout --- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background-color: rgba(10, 10, 26, 0.8);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px var(--secondary-neon);
+    }
+    .card h3 {
+      color: var(--accent-yellow);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .mentor-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem auto;
+      border: 3px solid var(--primary-neon);
+      box-shadow: 0 0 15px var(--primary-neon);
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 800px; /* Limit max width for better presentation */
+      background: #000;
+      margin: 0 auto; /* Center the video */
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- Timeline --- */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: var(--primary-neon);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      box-shadow: 0 0 10px var(--primary-neon);
+    }
+    .timeline-event {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+    }
+    .timeline-event:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-event:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-event::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background-color: var(--accent-yellow);
+        border: 4px solid var(--primary-neon);
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+    .timeline-event:nth-child(even)::after {
+        left: -10px;
+    }
+    .timeline-content {
+        padding: 1.5rem;
+        background: rgba(10, 10, 26, 0.8);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+    }
+    .timeline-content h3 {
+        color: var(--secondary-neon);
+    }
+
+    /* --- Gallery --- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .gallery img:hover {
+        transform: scale(1.05);
+        border-color: var(--secondary-neon);
+        box-shadow: 0 0 15px var(--secondary-neon);
+    }
+
+    /* --- CTA Section --- */
+    .cta-section {
+        text-align: center;
+    }
+    .cta-section p {
+        max-width: 600px;
+        margin: 0 auto 2rem auto;
+        color: var(--text-muted);
+    }
+
+    /* --- Footer --- */
+    .footer {
+      background-color: #000;
+      color: #aaa;
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+    .footer p {
+        margin-bottom: 0.5rem;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .timeline::after {
+        left: 20px;
+      }
+      .timeline-event {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 10px;
+        text-align: left !important;
+      }
+      .timeline-event:nth-child(even) {
+        left: 0%;
+      }
+      .timeline-event::after {
+        left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="h1-container">
+        <h1 class="line1">HIRAKATA</h1>
+        <h1 class="line2">JUNIOR GAME SHOW</h1>
+        <h1 class="line3">2025</h1>
+      </div>
+      <p>未来のゲームクリエイター、集え。<br>枚方から始まる、新たな創造の物語。</p>
+      <a href="#entry" class="btn">ENTRY NOW</a>
+    </div>
+  </header>
+
+  <!-- Event Overview -->
+  <section class="section">
+    <div class="container">
+      <h2>EVENT OVERVIEW</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>ゲームを「作る側」になろう！</h3>
+          <p>パソコンで動くデジタルゲームはもちろん、カードやボードを使うアナログゲームまで、君のアイデアを形にしよう！初心者でも、プロがしっかり教えるから大丈夫。</p>
+        </div>
+        <div class="card">
+          <h3>伝説のクリエイターに会える！</h3>
+          <p>『マリオカート』を作った伝説の開発者、木村眞人さんが君の先生に！ゲーム作りの秘訣や、挑戦することの楽しさを直接教えてもらえる特別なチャンスだ。</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Schedule -->
+  <section class="section">
+    <div class="container">
+      <h2>SCHEDULE</h2>
+      <div class="timeline">
+        <div class="timeline-event">
+          <div class="timeline-content">
+            <h3>10/5 [SUN] - 開会式</h3>
+            <p>伝説のクリエイター木村眞人さんによる講演でスタート！ここで一緒にゲームを作るチームが決まるぞ。</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-content">
+            <h3>10/12 [SUN] - アイデア会議</h3>
+            <p>どんなゲームを作るか、みんなでアイデアを出し合おう。枚方のまちを探検して、面白いゲームのタネを見つけよう。</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-content">
+            <h3>10/18[SAT] & 19[SUN] - ゲーム制作タイム</h3>
+            <p>いよいよゲーム作り開始！木村眞人さんから直接アドバイスをもらいながら、ゲームの試作品（プロトタイプ）を完成させよう。</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-content">
+            <h3>10/25 [SAT] - 最終リハーサル</h3>
+            <p>発表会に向けて、最後の準備。本番さながらの雰囲気で、プレゼンテーションの練習をしよう。</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-content">
+            <h3>10/26 [SUN] - ゲームショウ本番！</h3>
+            <p>君が作ったゲームを、たくさんの人の前で発表する日！最高の作品を披露して、みんなを驚かせよう！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guest Mentors -->
+  <section class="section">
+    <div class="container">
+      <h2>GUEST MENTORS</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="assets/kimura.jpg" alt="木村 眞人" class="mentor-img">
+          <h3>木村 眞人</h3>
+          <p>初代『マリオカート』などを開発した伝説のプロデューサー。面白いゲームがどうやって生まれるのか、その秘密を君にだけ教えるよ。</p>
+        </div>
+        <div class="card">
+          <img src="assets/uebo.jpg" alt="上坊 信貴" class="mentor-img">
+          <h3>上坊 信貴</h3>
+          <p>世界中のボードゲームを知っている博士。パソコンを使わないアナログゲームの、奥深い面白さを教えてくれるよ。</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Organizer Introduction -->
+  <section class="section">
+    <div class="container">
+      <h2>主催：探究塾ぱ〜ぱす</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>「なぜ？」を深める学びの場</h3>
+          <p>探究塾ぱ〜ぱすは、子どもたちが自ら「なぜ？」と感じたことをとことん追求し、答えを見つける力を育む学習塾です。ゲーム制作を通じて、論理的思考力や問題解決能力を養います。</p>
+        </div>
+        <div class="card">
+          <h3>未来を創る力を育む</h3>
+          <p>私たちは、単なる知識の詰め込みではなく、子どもたちが未来を自らの手で切り拓くための「探究心」と「創造力」を大切にしています。ゲーム制作はそのための最高のツールです。</p>
+        </div>
+      </div>
+      <div class="video-container" style="margin-top: 4rem;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1mPuZes-cbY?si=Zz4wg55nf9Q4l5BE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section cta-section" id="entry">
+    <div class="container">
+      <h2>君の挑戦を待っている！</h2>
+      <p>募集するのは、ゲームが大好きな小学3年生から中学3年生までの君！パソコンで動くゲームはもちろん、友達とすぐに遊べるカードゲームやボードゲーム作りに挑戦したい君の応募を待ってるよ。人気だから、急いで応募してね！</p>
+      <a href="https://forms.google.com" class="btn" target="_blank">今すぐ申し込む</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 探究塾ぱ〜ぱす / HIRAKATA JUNIOR GAME SHOW. All rights reserved.</p>
+      <p>CONTACT: info@tankyu-paps.jp</p>
+    </div>
+  </footer>
+
+</body>
+</html>
