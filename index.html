@@ -211,10 +211,6 @@
       animation: fade-in 1s ease-out 6s forwards;
     }
 
-    #playBGM {
-      margin-top: 1rem;
-    }
-
     .btn:hover {
       background-color: var(--primary-neon);
       color: var(--bg-color);
@@ -361,6 +357,26 @@
         color: var(--secondary-neon);
     }
 
+    /* --- Gallery --- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .gallery img:hover {
+        transform: scale(1.05);
+        border-color: var(--secondary-neon);
+        box-shadow: 0 0 15px var(--secondary-neon);
+    }
+
     /* --- CTA Section --- */
     .cta-section {
         text-align: center;
@@ -408,48 +424,53 @@
     <div class="spinner"></div>
     <p>LOADING...</p>
   </div>
+  <script
+  // 画面の描画とリソース読み込みが終わったらローディングを消す
+  window.addEventListener('load', () => {
+    const ls = document.getElementById('loading-screen');
+    if (ls) ls.style.display = 'none';
+  });
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('bgmAudio');
-      const btn = document.getElementById('playBGM');
-  
-      // ファイル名にスペースや全角文字がある場合の安全策
-      const sourceEl = audio.querySelector('source');
-      if (sourceEl && sourceEl.getAttribute('data-encoded') !== '1') {
-        const raw = sourceEl.getAttribute('src');
-        sourceEl.setAttribute('src', encodeURI(raw));
-        sourceEl.setAttribute('data-encoded', '1');
-        // src を更新したので、明示的にロード
-        audio.load();
-      }
-  
-      const setLabel = () => {
-        btn.textContent = audio.paused ? 'BGMを再生' : 'BGMを停止';
-      };
-  
-      btn.addEventListener('click', async () => {
-        try {
-          if (audio.paused) {
-            await audio.play();       // ユーザー操作内での再生
-          } else {
-            audio.pause();
-          }
-        } catch (err) {
-          console.error(err);
-          alert('再生がブロックされました。端末の消音スイッチや音量設定をご確認ください。');
-        } finally {
-          setLabel();
+  document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('bgmAudio');
+    const btn = document.getElementById('playBGM');
+    if (!audio || !btn) return; // 要素が見つからない場合は何もしない
+
+    // パスの安全化（スペース/全角含む場合）
+    const sourceEl = audio.querySelector('source');
+    if (sourceEl && sourceEl.getAttribute('data-encoded') !== '1') {
+      const raw = sourceEl.getAttribute('src') || '';
+      sourceEl.setAttribute('src', encodeURI(raw));
+      sourceEl.setAttribute('data-encoded', '1');
+      audio.load();
+    }
+
+    const setLabel = () => {
+      btn.textContent = audio.paused ? 'BGMを再生' : 'BGMを停止';
+    };
+
+    btn.addEventListener('click', async () => {
+      try {
+        if (audio.paused) {
+          await audio.play(); // ユーザー操作内なのでブラウザ規約OK
+        } else {
+          audio.pause();
         }
-      });
-  
-      // 再生終了時にボタン表示を戻す（loop外した場合の保険）
-      audio.addEventListener('ended', setLabel);
-  
-      setLabel();
+      } catch (err) {
+        console.error(err);
+        alert('再生がブロックされた可能性があります。端末の消音スイッチ/音量や、ファイルの場所を確認してください。');
+      } finally {
+        setLabel();
+      }
     });
-  </script>  
+
+    audio.addEventListener('ended', setLabel);
+    setLabel();
+  });
+</script>
+
   <audio id="bgmAudio" loop preload="metadata" playsinline>
-    <source src="assets/niji-no-drift-remix.mp3" type="audio/mpeg">
+    <source src="assets/虹のドリフト (Remix).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>  
   <!-- Hero Section -->
@@ -462,7 +483,7 @@
       </div>
       <p>未来のゲームクリエイター、集え。<br>枚方から始まる、新たな創造の物語。</p>
       <a href="#entry" class="btn">今すぐ申し込む</a>
-      <button id="playBGM" class="btn" aria-label="BGMを再生">BGMを再生</button>
+      <button id="playBGM" class="btn" style="margin-top: 1rem;">BGMを再生</button>
     </div>
   </header>
 
@@ -514,7 +535,7 @@
         <div class="timeline-event">
           <div class="timeline-content">
             <h3>10/12 [SUN] - アイデア会議</h3>
-            <p>どんなゲームを作るか、みんなでアイデアを出し合おう。枚方のまちを探検して、面白いゲームのタネを見つけよう。</p>
+            <p>どんなゲームを作るか、みんなでアイデアを出し合おう。自分の身の回りを探検して、面白いゲームのタネを見つけよう。</p>
           </div>
         </div>
         <div class="timeline-event">
@@ -559,6 +580,9 @@
     </div>
   </section>
 
+  
+
+  <!-- Organizer Introduction -->
   <section class="section">
     <div class="container">
       <h2>主催：探究塾ぱ〜ぱす</h2>
@@ -595,6 +619,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js" defer></script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
