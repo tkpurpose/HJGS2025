@@ -431,11 +431,8 @@
     if (ls) ls.style.display = 'none';
   });
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM content loaded.');
     const audio = document.getElementById('bgmAudio');
     const btn = document.getElementById('playBGM');
-    console.log('Audio element:', audio);
-    console.log('Button element:', btn);
     if (!audio || !btn) return; // 要素が見つからない場合は何もしない
 
     // パスの安全化（スペース/全角含む場合）
@@ -452,8 +449,6 @@
     };
 
     btn.addEventListener('click', async () => {
-      console.log('Play button clicked.');
-      console.log('Audio paused state:', audio.paused);
       try {
         if (audio.paused) {
           await audio.play(); // ユーザー操作内なのでブラウザ規約OK
@@ -461,7 +456,7 @@
           audio.pause();
         }
       } catch (err) {
-        console.error('Error playing audio:', err);
+        console.error(err);
         alert('再生がブロックされた可能性があります。端末の消音スイッチ/音量や、ファイルの場所を確認してください。');
       } finally {
         setLabel();
