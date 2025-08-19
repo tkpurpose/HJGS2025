@@ -446,30 +446,34 @@
         white-space: normal; /* テキストの折り返しを許可 */
         width: auto; /* 幅を自動に設定 */
         border-right: none; /* カーソルを非表示 */
-        animation: none; /* タイピングアニメーションを無効化 */
         font-size: 2.2rem; /* スマホ用にフォントサイズを調整 */
         line-height: 1.1; /* 行間を調整 */
         letter-spacing: 0.02em; /* 文字間を詰める */
+        opacity: 0; /* フェードインのために初期値を0に */
+        animation: fade-in 1s ease-out forwards; /* フェードインアニメーション */
       }
-      .h1-container .line1,
-      .h1-container .line2,
+      .h1-container .line1 {
+        animation: fade-in 1s ease-out 0.5s forwards; /* 遅延を追加 */
+      }
+      .h1-container .line2 {
+        animation: fade-in 1s ease-out 1.5s forwards; /* 遅延を追加 */
+      }
       .h1-container .line3 {
-        animation: none; /* 個別のアニメーションも無効化 */
-        width: auto;
-        opacity: 1; /* 最初から表示 */
+        animation: fade-in 1s ease-out 2.5s forwards; /* 遅延を追加 */
       }
       .hero p {
-        animation: none; /* フェードインアニメーションも無効化 */
-        opacity: 1;
+        opacity: 0; /* フェードインのために初期値を0に */
+        animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 3s forwards; /* 遅延を調整 */
       }
       .hero .btn {
-        animation: none; /* フェードインアニメーションも無効化 */
-        opacity: 1;
+        opacity: 0; /* フェードインのために初期値を0に */
+        animation: fade-in 1s ease-out 4s forwards; /* 遅延を調整 */
       }
       .hero {
         background-size: contain; /* 画像全体を表示 */
         background-repeat: no-repeat; /* 繰り返しを防止 */
         background-position: center top; /* 上部中央に配置 */
+        filter: brightness(1.2); /* 明度を上げる */
       }
       .timeline::after {
         left: 20px;
