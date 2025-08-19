@@ -447,8 +447,9 @@
         width: auto; /* 幅を自動に設定 */
         border-right: none; /* カーソルを非表示 */
         animation: none; /* タイピングアニメーションを無効化 */
-        font-size: 2.8rem; /* スマホ用にフォントサイズを調整 */
-        line-height: 1.2; /* 行間を調整 */
+        font-size: 2.2rem; /* スマホ用にフォントサイズを調整 */
+        line-height: 1.1; /* 行間を調整 */
+        letter-spacing: 0.02em; /* 文字間を詰める */
       }
       .h1-container .line1,
       .h1-container .line2,
@@ -464,6 +465,11 @@
       .hero .btn {
         animation: none; /* フェードインアニメーションも無効化 */
         opacity: 1;
+      }
+      .hero {
+        background-size: contain; /* 画像全体を表示 */
+        background-repeat: no-repeat; /* 繰り返しを防止 */
+        background-position: center top; /* 上部中央に配置 */
       }
       .timeline::after {
         left: 20px;
