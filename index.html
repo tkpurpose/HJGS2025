@@ -442,6 +442,29 @@
 
     /* --- Responsive --- */
     @media (max-width: 768px) {
+      .h1-container h1 {
+        white-space: normal; /* テキストの折り返しを許可 */
+        width: auto; /* 幅を自動に設定 */
+        border-right: none; /* カーソルを非表示 */
+        animation: none; /* タイピングアニメーションを無効化 */
+        font-size: 2.8rem; /* スマホ用にフォントサイズを調整 */
+        line-height: 1.2; /* 行間を調整 */
+      }
+      .h1-container .line1,
+      .h1-container .line2,
+      .h1-container .line3 {
+        animation: none; /* 個別のアニメーションも無効化 */
+        width: auto;
+        opacity: 1; /* 最初から表示 */
+      }
+      .hero p {
+        animation: none; /* フェードインアニメーションも無効化 */
+        opacity: 1;
+      }
+      .hero .btn {
+        animation: none; /* フェードインアニメーションも無効化 */
+        opacity: 1;
+      }
       .timeline::after {
         left: 20px;
       }
