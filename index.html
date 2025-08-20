@@ -428,6 +428,74 @@
       margin-bottom: 0 !important;
     }
 
+    .limited-offer {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--secondary-neon);
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px var(--secondary-neon);
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: var(--accent-yellow);
+      margin-top: 0.5rem;
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: var(--accent-yellow);
+      margin-top: 0.5rem;
+    }
+
+    .event-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 2rem;
+    }
+
+    .event-list li {
+      margin-bottom: 2rem;
+      background-color: rgba(0, 255, 255, 0.05);
+      border-left: 4px solid var(--primary-neon);
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    .event-list li h4 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .event-list li .icon {
+      font-size: 1.8rem;
+      margin-right: 0.8rem;
+      color: var(--accent-yellow);
+    }
+
+    .event-list li p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-light);
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 2rem;
+    }
+
     /* --- Footer --- */
     .footer {
       background-color: #000;
@@ -620,18 +688,24 @@
 
       <div class="event-details">
         <h3>イベントの内容紹介</h3>
-        <p>HJGS（ひらかたジュニアゲームショー）は、<strong>「つくる→見せる→称える」を一日で体験できるクリエイティブフェス。子どもたちが大人の志に触れ、「やってみたい！」「自分にもできた！」</strong>を実感するための仕掛けが詰まっています。</p>
+        <p>HJGS（ひらかたジュニアゲームショー）プロジェクトは、約1ヶ月にわたる<strong>「キミのゲームを開発し、みんなに発表し、達成感を味わう」</strong>を体験できるクリエイティブな取り組みです。子どもたちが大人の志に触れ、<strong>「やってみたい！」「自分にもできた！」</strong>を実感するための仕掛けが詰まっています。</p>
         
-        <h4>1. キックオフトーク ― 面白さの設計図にふれる</h4>
-        <p>第一線で活躍したゲーム開発者による特別トーク（木村眞人氏ご登壇予定）。名作が生まれる舞台裏や「面白さ」をつくる思考法を、子どもにもわかる言葉で共有します。保護者の方にも“学びとしてのゲームづくり”の価値が伝わる時間です。</p>
+        <ul class="event-list">
+          <li>
+            <h4><span class="icon">🎤</span> 1. キックオフトーク ― 面白さの設計図にふれる</h4>
+            <p>第一線で活躍したゲーム開発者による特別トーク（木村眞人氏ご登壇予定）。名作が生まれる舞台裏や「面白さ」をつくる思考法を、子どもにもわかる言葉で共有します。保護者の方にも“学びとしてのゲームづくり”の価値が伝わる時間です。</p>
+          </li>
+          <li>
+            <h4><span class="icon">💻</span> 2. クリエイト・ラボ ― デジタルもアナログも本気で制作</h4>
+            <p>Scratch／Minecraft／Unity／Switch「はじめてのゲームプログラミング」（体験）などからツールを選び、ペアプロ（2人）中心で制作を進めます。アナログ派はカード・ボードゲームの企画からプロトタイプづくりまで。短いスプリントで試作→改善を繰り返します。</p>
+          </li>
+          <li>
+            <h4><span class="icon">🤝</span> 3. メンタリング＆テストプレイ ― 70%で見せて磨く</h4>
+            <p>運営メンターや特別ゲスト、来場者のテストプレイから率直なフィードバックを収集。「何が楽しい？どこで迷った？」を言語化し、ゲームの改善に活かします。制作に必要なハサミ、のり、色ペンなどの道具は会場でも一部用意があります。</p>
+          </li>
+        </ul>
 
-        <h4>2. クリエイト・ラボ ― デジタルもアナログも本気で制作</h4>
-        <p>Scratch／Minecraft／Unity／Switch「はじめてのゲームプログラミング」（体験）などからツールを選び、ペアプロ（2人）中心で制作を進めます。アナログ派はカード・ボードゲームの企画からプロトタイプづくりまで。短いスプリントで試作→改善を繰り返します。</p>
-
-        <h4>3. メンタリング＆テストプレイ ― 70%で見せて磨く</h4>
-        <p>運営メンターや特別ゲスト、来場者のテストプレイから率直なフィードバックを収集。「何が楽しい？どこで迷った？」を言語化し、ルールはさみ・のり・色ペン・スリーブ等（会場でも一部用意あり）</p>
-
-        <p>※登壇者／プログラム内容は調整中の項目を含みます。最新情報は本ページで随時更新します。</p>
+        <p class="note">※登壇者／プログラム内容は調整中の項目を含みます。最新情報は本ページで随時更新します。</p>
       </div>
     </div>
   </section>
@@ -645,30 +719,42 @@
           <div class="timeline-content">
             <h3>10/5 [SUN] - 開会式</h3>
             <p>元任天堂のトップクリエイター木村眞人さんによる講演でスタート！ここで一緒にゲームを作るチームが決まるぞ。</p>
+            <p class="location">場所：探究塾ぱ～ぱす教室</p>
           </div>
         </div>
         <div class="timeline-event">
           <div class="timeline-content">
-            <h3>10/12 [SUN] - アイデア会議</h3>
-            <p>どんなゲームを作るか、みんなでアイデアを出し合おう。自分の身の回りを探検して、面白いゲームのタネを見つけよう。</p>
+            <h3>10/12 [SUN] - アイデア会議＆ゲーム制作開始</h3>
+            <p>どんなゲームを作るか、みんなでアイデアを出し合い、いよいよゲーム制作を開始します。自分の身の回りを探検して、面白いゲームのタネを見つけよう。</p>
+            <p class="location">場所：探究塾ぱ～ぱす教室</p>
           </div>
         </div>
         <div class="timeline-event">
           <div class="timeline-content">
-            <h3>10/18[SAT] & 19[SUN] - ゲーム制作タイム</h3>
-            <p>いよいよゲーム作り開始！木村眞人さんから直接アドバイスをもらいながら、ゲームの試作品（プロトタイプ）を完成させよう。</p>
+            <h3>10/18[SAT] - 予備日（自由参加）</h3>
+            <p>ゲーム制作の進捗に合わせて、自由に制作を進められる予備日です。講師たちからのアドバイスも受けられます。</p>
+            <p class="location">場所：探究塾ぱ～ぱす教室</p>
           </div>
         </div>
         <div class="timeline-event">
           <div class="timeline-content">
-            <h3>10/25 [SAT] - 最終リハーサル</h3>
-            <p>発表会に向けて、最後の準備。本番さながらの雰囲気で、プレゼンテーションの練習をしよう。</p>
+            <h3>10/19[SUN] - ゲーム制作タイム</h3>
+            <p>特別講師たちから直接アドバイスをもらいながら、世界に１つだけのゲームを完成させよう。</p>
+            <p class="location">場所：探究塾ぱ～ぱす教室</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="timeline-content">
+            <h3>10/25 [SAT] - 予備日（自由参加）</h3>
+            <p>発表会に向けた最終調整や、プレゼンテーションの練習など、自由に活用できる予備日です。</p>
+            <p class="location">場所：探究塾ぱ～ぱす教室</p>
           </div>
         </div>
         <div class="timeline-event">
           <div class="timeline-content">
             <h3>10/26 [SUN] - ゲームショウ本番！</h3>
             <p>君が作ったゲームを、たくさんの人の前で発表する日！最高の作品を披露して、みんなを驚かせよう！</p>
+            <p class="location">場所：南部生涯学習市民センターイベントホール</p>
           </div>
         </div>
       </div>
@@ -723,8 +809,9 @@
       <h2>君の挑戦を待っている！</h2>
       <div class="fee-container">
         <p class="fee-label">参加費用</p>
-        <p class="fee-price">8,000円<span class="tax-included">（税込）</span></p>
-        <p class="fee-note">元任天堂開発者による直接指導、機材レンタル費、施設利用料 全て込み</p>
+        <p class="fee-price">15,000円<span class="tax-included">（税込）</span></p>
+        <p class="limited-offer">先着20名限定!!</p>
+        <p class="fee-note">ゲームの魅力を知り尽くしたプロ講師による直接指導、機材レンタル費、施設利用料 全て込み</p>
       </div>
       <p>募集するのは、ゲームが大好きな小学3年生から中学3年生までの君！パソコンで動くゲームはもちろん、友達とすぐに遊べるカードゲームやボードゲーム作りに挑戦したい君の応募を待ってるよ。人気だから、急いで応募してね！</p>
       <a href="#entry" class="btn">今すぐ申し込む</a>
