@@ -640,13 +640,62 @@
 <body>
   <div id="loading-screen">
     <div class="spinner"></div>
-    <p>LOADING...</p>
+    <p id="loading-text">LOADING...</p>
+    <div id="bgm-prompt" style="display: none; margin-top: 20px; text-align: center; opacity: 0; transition: opacity 0.5s ease-in-out;">
+      <p style="font-size: 1.2rem; margin-bottom: 15px; font-family: 'Noto Sans JP', sans-serif; text-shadow: none;">BGMを再生しますか？</p>
+      <button id="bgm-yes" class="btn">はい</button>
+      <button id="bgm-no" class="btn" style="margin-left: 10px; border-color: var(--secondary-neon); color: var(--secondary-neon); box-shadow: 0 0 10px var(--secondary-neon), inset 0 0 10px var(--secondary-neon);">いいえ</button>
+    </div>
   </div>
   <script>
-  // 画面の描画とリソース読み込みが終わったらローディングを消す
+  // BGM再生の確認とローディング画面の制御
   window.addEventListener('load', () => {
-    const ls = document.getElementById('loading-screen');
-    if (ls) ls.style.display = 'none';
+    const loadingScreen = document.getElementById('loading-screen');
+    const spinner = loadingScreen.querySelector('.spinner');
+    const loadingText = document.getElementById('loading-text');
+    const bgmPrompt = document.getElementById('bgm-prompt');
+    const audio = document.getElementById('bgmAudio');
+    const bgmYes = document.getElementById('bgm-yes');
+    const bgmNo = document.getElementById('bgm-no');
+    const playBGMButton = document.getElementById('playBGM');
+
+    if (!loadingScreen || !bgmPrompt || !audio || !playBGMButton) return;
+
+    // ローディング完了後、BGM再生のプロンプトを表示
+    if(spinner) spinner.style.display = 'none';
+    if(loadingText) loadingText.style.display = 'none';
+    
+    bgmPrompt.style.display = 'block';
+    setTimeout(() => { bgmPrompt.style.opacity = '1'; }, 10);
+
+    const closeLoadingScreen = () => {
+      loadingScreen.style.opacity = '0';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500); // フェードアウト後に非表示
+    };
+
+    const setPlayButtonLabel = () => {
+        playBGMButton.textContent = audio.paused ? 'BGMを再生' : 'BGMを停止';
+    };
+
+    bgmYes.addEventListener('click', async () => {
+      try {
+        await audio.play();
+      } catch (err) {
+        console.error("BGMの再生に失敗しました:", err);
+      } finally {
+        setPlayButtonLabel();
+        closeLoadingScreen();
+      }
+    });
+
+    bgmNo.addEventListener('click', () => {
+      setPlayButtonLabel();
+      closeLoadingScreen();
+    });
+    
+    loadingScreen.style.transition = 'opacity 0.5s ease-in-out';
   });
   document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('bgmAudio');
@@ -909,6 +958,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js"></script>
+  
 </body>
 </html>
