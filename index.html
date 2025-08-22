@@ -466,8 +466,33 @@
       margin-bottom: 2rem;
       background-color: rgba(0, 255, 255, 0.05);
       border-left: 4px solid var(--primary-neon);
-      padding: 1.5rem;
+      padding: 0; /* Reset padding */
       border-radius: 8px;
+      overflow: hidden; /* Ensure border-radius clips content */
+    }
+
+    .event-item-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem; /* Apply padding here instead of li */
+    }
+
+    .event-item-text {
+      flex: 3; /* Text takes more space */
+    }
+
+    .event-item-image {
+      flex: 2; /* Image takes less space */
+      align-self: stretch;
+    }
+
+    .event-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
     }
 
     .event-list li h4 {
@@ -599,6 +624,16 @@
       .fee-price {
         font-size: 2rem;
       }
+
+      .event-item-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .event-item-image {
+        width: 100%;
+        max-height: 300px; /* Set a max-height for images on mobile */
+      }
     }
   </style>
 </head>
@@ -692,24 +727,55 @@
         
         <ul class="event-list">
           <li>
-            <h4><span class="icon">🎤</span> 1. キックオフトーク ― 面白さの設計図にふれる</h4>
-            <p>第一線で活躍したゲーム開発者による特別トーク（木村眞人氏ご登壇予定）。名作が生まれる舞台裏や「面白さ」をつくる思考法を、子どもにもわかる言葉で共有します。保護者の方にも“学びとしてのゲームづくり”の価値が伝わる時間です。</p>
+            <div class="event-item-content">
+              <div class="event-item-text">
+                <h4><span class="icon">🎤</span> 1. キックオフトーク ― 面白さの設計図にふれる</h4>
+                <p>第一線で活躍したゲーム開発者による特別トーク（木村眞人氏ご登壇予定）。名作が生まれる舞台裏や「面白さ」をつくる思考法を、子どもにもわかる言葉で共有します。保護者の方にも“学びとしてのゲームづくり”の価値が伝わる時間です。</p>
+              </div>
+              <div class="event-item-image">
+                <img src="assets/kickofftalk.png" alt="キックオフトークの様子">
+              </div>
+            </div>
           </li>
           <li>
-            <h4><span class="icon">💻</span> 2. クリエイト・ラボ ― デジタルもアナログも本気で制作</h4>
-            <p>Scratch／Minecraft／Unity／Switch「はじめてのゲームプログラミング」（体験）などからツールを選び、ペアプロ（2人）中心で制作を進めます。アナログ派はカード・ボードゲームの企画からプロトタイプづくりまで。短いスプリントで試作→改善を繰り返します。</p>
+            <div class="event-item-content">
+              <div class="event-item-text">
+                <h4><span class="icon">💻</span> 2. クリエイト・ラボ ― デジタルもアナログも本気で制作</h4>
+                <p>Scratch／Minecraft／Unity／Switch「はじめてのゲームプログラミング」（体験）などからツールを選び、ペアプロ（2人）中心で制作を進めます。アナログ派はカード・ボードゲームの企画からプロトタイプづくりまで。短いスプリントで試作→改善を繰り返します。</p>
+                <div class="video-container" style="margin-top: 1.5rem;">
+                  <iframe src="https://www.youtube.com/embed/6wUuPJARbiM" title="塾生が作ったゲームの紹介" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="event-item-image">
+                <img src="assets/createlabo.jpg" alt="クリエイト・ラボの様子">
+              </div>
+            </div>
           </li>
           <li>
-            <h4><span class="icon">🤝</span> 3. メンタリング＆テストプレイ ― 70%で見せて磨く</h4>
-            <p>運営メンターや特別ゲスト、来場者のテストプレイから率直なフィードバックを収集。「何が楽しい？どこで迷った？」を言語化し、ゲームの改善に活かします。制作に必要なハサミ、のり、色ペンなどの道具は会場でも一部用意があります。</p>
+            <div class="event-item-content">
+              <div class="event-item-text">
+                <h4><span class="icon">🤝</span> 3. メンタリング＆テストプレイ ― 70%で見せて磨く</h4>
+                <p>運営メンターや特別ゲスト、来場者のテストプレイから率直なフィードバックを収集。「何が楽しい？どこで迷った？」を言語化し、ゲームの改善に活かします。制作に必要なハサミ、のり、色ペンなどの道具は会場でも一部用意があります。</p>
+              </div>
+              <div class="event-item-image">
+                <img src="assets/mentor.jpg" alt="メンタリングの様子">
+              </div>
+            </div>
           </li>
           <li>
-            <h4><span class="icon">🎉</span> 4. ひらかたジュニアゲームショー当日 ― 成果発表と交流の場</h4>
-            <p>君が作ったゲームを、たくさんの人の前で発表する日！来場者との交流を通じて、フィードバックをもらい、ゲームの面白さを共有しよう。最高の作品を披露して、みんなを驚かせよう！</p>
+            <div class="event-item-content">
+              <div class="event-item-text">
+                <h4><span class="icon">🎉</span> 4. ひらかたジュニアゲームショー当日 ― 成果発表と交流の場</h4>
+                <p>君が作ったゲームを、たくさんの人の前で発表する日！来場者との交流を通じて、フィードバックをもらい、ゲームの面白さを共有しよう。最高の作品を披露して、みんなを驚かせよう！</p>
+              </div>
+              <div class="event-item-image">
+                <img src="assets/gameshow.png" alt="ゲームショー当日の様子">
+              </div>
+            </div>
           </li>
         </ul>
 
-        <p class="note">※登壇者／プログラム内容は調整中の項目を含みます。最新情報は本ページで随時更新します。</p>
+        <p class="note">※登壇者／プログラム内容は調整中の項目を含みます。掲載の写真には一部イメージ画像が含まれます。最新情報は本ページで随時更新します。</p>
       </div>
     </div>
   </section>
@@ -803,6 +869,9 @@
       </div>
       <div class="video-container" style="margin-top: 4rem;">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/1mPuZes-cbY?si=Zz4wg55nf9Q4l5BE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="https://tankyu-purpose.com/" class="btn" target="_blank" rel="noopener noreferrer">公式HPはこちら</a>
       </div>
     </div>
   </section>
