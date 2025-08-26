@@ -4,6 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HIRAKATA JUNIOR GAME SHOW 2025</title>
+
+  <!-- OGP (Open Graph Protocol) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HIRAKATA JUNIOR GAME SHOW 2025">
+  <meta property="og:description" content="未来のゲームクリエイター、集え。枚方から始まる、新たな創造の物語。">
+  <meta property="og:url" content="https://tkpurpose.github.io/HJGS2025/">
+  <meta property="og:image" content="https://tkpurpose.github.io/HJGS2025/assets/Hero_image.png">
+  <meta property="og:site_name" content="HIRAKATA JUNIOR GAME SHOW 2025">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HIRAKATA JUNIOR GAME SHOW 2025">
+  <meta name="twitter:description" content="未来のゲームクリエイター、集え。枚方から始まる、新たな創造の物語。">
+  <meta name="twitter:image" content="https://tkpurpose.github.io/HJGS2025/assets/Hero_image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -26,9 +41,10 @@
 
     body {
       font-family: 'Noto Sans JP', sans-serif;
+      font-size: 20px; /* 基本フォントサイズをさらに大きく */
       background-color: var(--bg-color);
       color: var(--text-light);
-      line-height: 1.8;
+      line-height: 2.1; /* 行間もさらに広げる */
       overflow-x: hidden;
       background-image: 
         linear-gradient(var(--border-color) 1px, transparent 1px),
@@ -117,7 +133,7 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 2rem;
       position: relative;
@@ -219,12 +235,12 @@
 
     /* --- Section --- */
     .section {
-      padding: 6rem 0;
+      padding: 10rem 0;
       border-bottom: 1px solid var(--border-color);
       position: relative;
     }
     .section h2 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       text-align: center;
       margin-bottom: 4rem;
       color: var(--primary-neon);
@@ -240,7 +256,7 @@
     .card {
       background-color: rgba(10, 10, 26, 0.8);
       border: 1px solid var(--border-color);
-      padding: 2rem;
+      padding: 2.5rem;
       border-radius: 8px;
       backdrop-filter: blur(5px);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -252,7 +268,7 @@
 
     .event-details {
       margin-top: 4rem;
-      padding: 2rem;
+      padding: 2.5rem;
       border: 1px solid var(--border-color);
       border-radius: 8px;
       background-color: rgba(10, 10, 26, 0.8);
@@ -271,7 +287,7 @@
     .card h3 {
       color: var(--accent-yellow);
       margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
     }
 
     .mentor-img {
@@ -289,7 +305,7 @@
       padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
       overflow: hidden;
-      max-width: 800px; /* Limit max width for better presentation */
+      max-width: 1400px; /* Limit max width for better presentation */
       background: #000;
       margin: 0 auto; /* Center the video */
     }
@@ -305,7 +321,7 @@
     /* --- Timeline --- */
     .timeline {
       position: relative;
-      max-width: 800px;
+      max-width: 1400px;
       margin: 0 auto;
     }
     .timeline::after {
@@ -348,7 +364,7 @@
         left: -10px;
     }
     .timeline-content {
-        padding: 1.5rem;
+        padding: 2.0rem;
         background: rgba(10, 10, 26, 0.8);
         border: 1px solid var(--border-color);
         border-radius: 8px;
@@ -509,7 +525,7 @@
     }
 
     .event-list li p {
-      font-size: 1rem;
+      font-size: 1.4rem;
       line-height: 1.6;
       color: var(--text-light);
     }
@@ -519,6 +535,58 @@
       color: var(--text-muted);
       text-align: right;
       margin-top: 2rem;
+    }
+
+    /* --- FAQ Section --- */
+    .faq-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+    }
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 400; /* Adjusted font weight */
+      font-size: 1.3rem; /* Adjusted font size */
+      text-align: left;
+      padding: 1.5rem 2.5rem 1.5rem 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.3s;
+    }
+    .faq-question:hover {
+      background-color: rgba(0, 255, 255, 0.05);
+    }
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--primary-neon);
+      transition: transform 0.3s ease-in-out;
+    }
+    .faq-question.active::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+      background: rgba(10, 10, 26, 0.5);
+    }
+    .faq-answer p {
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.7;
     }
 
     /* --- Footer --- */
@@ -640,63 +708,10 @@
 <body>
   <div id="loading-screen">
     <div class="spinner"></div>
-    <p id="loading-text">LOADING...</p>
-    <div id="bgm-prompt" style="display: none; margin-top: 20px; text-align: center; opacity: 0; transition: opacity 0.5s ease-in-out;">
-      <p style="font-size: 1.2rem; margin-bottom: 15px; font-family: 'Noto Sans JP', sans-serif; text-shadow: none;">BGMを再生しますか？</p>
-      <button id="bgm-yes" class="btn">はい</button>
-      <button id="bgm-no" class="btn" style="margin-left: 10px; border-color: var(--secondary-neon); color: var(--secondary-neon); box-shadow: 0 0 10px var(--secondary-neon), inset 0 0 10px var(--secondary-neon);">いいえ</button>
-    </div>
+    <p>LOADING...</p>
   </div>
   <script>
-  // BGM再生の確認とローディング画面の制御
-  window.addEventListener('load', () => {
-    const loadingScreen = document.getElementById('loading-screen');
-    const spinner = loadingScreen.querySelector('.spinner');
-    const loadingText = document.getElementById('loading-text');
-    const bgmPrompt = document.getElementById('bgm-prompt');
-    const audio = document.getElementById('bgmAudio');
-    const bgmYes = document.getElementById('bgm-yes');
-    const bgmNo = document.getElementById('bgm-no');
-    const playBGMButton = document.getElementById('playBGM');
-
-    if (!loadingScreen || !bgmPrompt || !audio || !playBGMButton) return;
-
-    // ローディング完了後、BGM再生のプロンプトを表示
-    if(spinner) spinner.style.display = 'none';
-    if(loadingText) loadingText.style.display = 'none';
-    
-    bgmPrompt.style.display = 'block';
-    setTimeout(() => { bgmPrompt.style.opacity = '1'; }, 10);
-
-    const closeLoadingScreen = () => {
-      loadingScreen.style.opacity = '0';
-      setTimeout(() => {
-        loadingScreen.style.display = 'none';
-      }, 500); // フェードアウト後に非表示
-    };
-
-    const setPlayButtonLabel = () => {
-        playBGMButton.textContent = audio.paused ? 'BGMを再生' : 'BGMを停止';
-    };
-
-    bgmYes.addEventListener('click', async () => {
-      try {
-        await audio.play();
-      } catch (err) {
-        console.error("BGMの再生に失敗しました:", err);
-      } finally {
-        setPlayButtonLabel();
-        closeLoadingScreen();
-      }
-    });
-
-    bgmNo.addEventListener('click', () => {
-      setPlayButtonLabel();
-      closeLoadingScreen();
-    });
-    
-    loadingScreen.style.transition = 'opacity 0.5s ease-in-out';
-  });
+  
   document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('bgmAudio');
     const btn = document.getElementById('playBGM');
@@ -873,7 +888,7 @@
           <div class="timeline-content">
             <h3>10/26 [SUN] - ゲームショウ本番！</h3>
             <p>君が作ったゲームを、たくさんの人の前で発表する日！最高の作品を披露して、みんなを驚かせよう！</p>
-            <p class="location">場所：南部生涯学習市民センターイベントホール</p>
+            <p class="location">場所：南部生涯学習市民センターイベントホール(仮)</p>
           </div>
         </div>
       </div>
@@ -920,7 +935,35 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/1mPuZes-cbY?si=Zz4wg55nf9Q4l5BE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div style="text-align: center; margin-top: 2.5rem;">
-        <a href="https://tankyu-purpose.com/" class="btn" target="_blank" rel="noopener noreferrer">公式HPはこちら</a>
+            <a href="https://tankyu-purpose.com/" class="btn" target="_blank" rel="noopener noreferrer">公式HPはこちら</a>
+          </div>
+          <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">〒573-0057 大阪府枚方市堤町10−24 鍵屋別館４階 ひらつー事務所内</p>
+        </div>
+      </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">プログラミング経験が全くなくても参加できますか？</button>
+          <div class="faq-answer">
+            <p>もちろん参加できます。初心者向けにアイデアシート→簡単な試作→遊んで改善の流れで進め、メンターが常時サポートします。Scratchや「はじめてのゲームプログラミング」（体験）など、初めてでも楽しめるツールからスタートできます。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">パソコンは持参が必要ですか？</button>
+          <div class="faq-answer">
+            <p>持参推奨です（ノートPCまたはiPad／充電器／マウス／イヤホン）。お持ちでない場合は台数限定で貸出可（要事前申請・先着）。Unity等の重いツールは事前インストールをご案内します。アナログ制作のみの方はPCなしでも参加できます。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">保護者の見学はできますか？</button>
+          <div class="faq-answer">
+            <p>キックオフ（開会）とショーケース（最終発表）は見学歓迎です。制作中は子どもたちの集中を守るため、見学エリアを限定します。写真撮影はショーケース時に可能ですが、他の参加者が写る投稿は配慮をお願いします（顔出しNG希望者がいるため）。</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -939,6 +982,8 @@
       <a href="https://forms.gle/Th8XCFDXKgK85qFq5" class="btn" target="_blank" rel="noopener noreferrer">今すぐ申し込む</a>
     </div>
   </section>
+
+  
 
   <!-- Volunteer Section -->
   <section class="section cta-section" id="volunteer">
@@ -959,5 +1004,21 @@
   </footer>
 
   
+  <script>
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        question.classList.toggle('active');
+        const answer = question.nextElementSibling;
+        if (answer.style.maxHeight) {
+          answer.style.maxHeight = null;
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
