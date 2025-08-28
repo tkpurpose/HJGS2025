@@ -1019,6 +1019,37 @@
       hamburgerMenu.addEventListener('click', () => {
         navLinksWrapper.classList.toggle('active');
       });
+
+      // ドキュメント全体のクリックイベントでメニューを閉じる
+      document.addEventListener('click', (event) => {
+        // ハンバーガーメニューまたはナビゲーションラッパーの内部をクリックした場合は何もしない
+        if (hamburgerMenu.contains(event.target) || navLinksWrapper.contains(event.target)) {
+          return;
+        }
+
+        // メニューが開いている場合は閉じる
+        if (navLinksWrapper.classList.contains('active')) {
+          navLinksWrapper.classList.remove('active');
+        }
+      });
+
+      // メニュー項目がクリックされたらメニューを閉じる（再試行）
+      const navLinks = document.querySelectorAll('.nav-links-new a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+          // Prevent default link behavior to ensure menu closes first
+          event.preventDefault();
+
+          if (navLinksWrapper.classList.contains('active')) {
+            navLinksWrapper.classList.remove('active');
+          }
+
+          // Manually navigate after a short delay to allow menu to close visually
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 300); // Match CSS transition duration for smooth closing
+        });
+      });
     }
   });
 </script>
