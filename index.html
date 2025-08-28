@@ -53,6 +53,8 @@
       animation: bg-pan 15s linear infinite;
     }
 
+    
+
     #loading-screen {
       position: fixed;
       top: 0;
@@ -207,6 +209,16 @@
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       opacity: 0;
       animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 5.5s forwards;
+    }
+
+    .presented-by {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--accent-yellow);
+      margin-top: 1rem;
+      text-shadow: 0 0 8px var(--accent-yellow);
+      opacity: 0;
+      animation: text-focus-in 1.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 5s forwards;
     }
 
     .btn {
@@ -444,6 +456,14 @@
       margin-bottom: 0 !important;
     }
 
+    .deadline-note {
+      font-size: 1.1rem;
+      color: var(--primary-neon);
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
     .limited-offer {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
@@ -453,6 +473,17 @@
       margin-bottom: 1rem;
       text-shadow: 0 0 10px var(--secondary-neon);
       animation: pulse 1.5s infinite alternate;
+    }
+
+    .limited-offer-countdown {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem; /* 少し大きく */
+      color: var(--accent-yellow); /* 色を変えて目立たせる */
+      text-align: center;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 12px var(--accent-yellow);
+      animation: pulse 1.3s infinite alternate;
     }
 
     @keyframes pulse {
@@ -704,8 +735,237 @@
       }
     }
   </style>
+  <style>
+    .new-main-nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 0.5rem 1rem; /* 上下左右のパディング */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(5px);
+      height: auto; /* コンテンツに合わせて高さを自動調整 */
+      min-height: 2cm; /* 最小高さを設定 */
+      max-height: 3cm; /* 最大高さを設定 */
+      display: flex; /* flexboxを有効にする */
+      align-items: center; /* 垂直方向中央揃え */
+    }
+
+    .new-main-nav .nav-container {
+      display: flex;
+      justify-content: flex-start; /* 左寄せ */
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-left-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; /* ロゴとタイトルの間隔 */
+    }
+
+    .nav-logo-new {
+      height: 1.5cm; /* ロゴの高さ */
+      border-radius: 4px;
+    }
+
+    .nav-title-group-new {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-main-title-new {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem; /* 0.8rem から変更 */
+      color: var(--primary-neon);
+      white-space: nowrap; /* 折り返しを防ぐ */
+    }
+
+    .nav-sub-title-new {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.7rem; /* 0.5rem から変更 */
+      color: var(--text-muted);
+      white-space: nowrap; /* 折り返しを防ぐ */
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .new-main-nav {
+        padding: 0.3rem 0.5rem; /* スマホでのパディング */
+        min-height: 1.5cm; /* スマホでの最小高さ */
+        max-height: 2.5cm; /* スマホでの最大高さ */
+      }
+      .nav-logo-new {
+        height: 1cm; /* スマホでのロゴの高さ */
+      }
+      .nav-main-title-new {
+        font-size: 0.6rem; /* スマホでのフォントサイズ */
+        white-space: normal; /* スマホでは折り返しを許可 */
+      }
+      .nav-sub-title-new {
+        font-size: 0.4rem; /* スマホでのフォントサイズ */
+        white-space: normal; /* スマホでは折り返しを許可 */
+      }
+      .nav-left-content {
+        gap: 0.3rem; /* スマホでの間隔 */
+      }
+    }
+
+    .new-main-nav .nav-container {
+      display: flex;
+      justify-content: space-between; /* 左右に配置 */
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-links-new {
+      list-style: none;
+      display: flex;
+      gap: 1rem; /* リンク間の間隔 */
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links-new a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.1rem; /* 1rem から変更 */
+      transition: color 0.3s ease;
+      white-space: nowrap; /* リンクは折り返さない */
+    }
+
+    .nav-links-new a:hover {
+      color: var(--primary-neon);
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .new-main-nav .nav-container {
+        flex-direction: column; /* スマホでは縦並び */
+        align-items: flex-start; /* 左寄せ */
+        gap: 0.5rem; /* 縦方向の間隔 */
+      }
+
+      .nav-links-new {
+        width: 100%;
+        overflow-x: hidden; /* 横スクロールを無効にする */
+        -webkit-overflow-scrolling: auto; /* iOSでのスムーズなスクロールを無効にする */
+        justify-content: center; /* 中央寄せにする */
+        gap: 0.2rem; /* 0.5rem からさらに変更 */
+        padding-bottom: 0; /* スクロールバーが見えるように */
+      }
+
+      .nav-links-new li {
+        flex-shrink: 0; /* 項目が縮小しないように */
+      }
+
+      .nav-links-new a {
+        font-size: 0.4rem; /* 0.6rem からさらに変更 */
+        padding: 0.1rem 0.2rem; /* 0.2rem 0.4rem からさらに変更 */
+        border: 1px solid rgba(255,255,255,0.2); /* 項目を区切るボーダー */
+        border-radius: 4px;
+      }
+    }
+
+    /* ハンバーガーメニューのスタイル */
+    .hamburger-menu {
+      display: none; /* デフォルトでは非表示 */
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 1001; /* ナビゲーション項目より手前に */
+    }
+
+    .hamburger-menu .bar {
+      width: 100%;
+      height: 3px;
+      background-color: var(--text-light);
+      border-radius: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* ナビゲーションリンクのラッパー */
+    .nav-links-wrapper {
+      /* デスクトップでは通常表示 */
+      display: block;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .hamburger-menu {
+        display: flex; /* モバイルで表示 */
+      }
+
+      .nav-links-wrapper {
+        display: none; /* モバイルで初期非表示 */
+        position: absolute;
+        top: 100%; /* ナビゲーションバーのすぐ下に配置 */
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* 背景色 */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 1rem 0;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden; /* はみ出しを隠す */
+        max-height: 0; /* 初期状態では高さを0に */
+      }
+
+      .nav-links-wrapper.active {
+        max-height: 300px; /* 表示時の最大高さ (コンテンツに合わせて調整) */
+      }
+
+      .nav-links-new {
+        flex-direction: column; /* 縦並び */
+        align-items: center; /* 中央寄せ */
+        gap: 0.8rem; /* 項目間の間隔 */
+        width: 100%;
+        overflow-x: hidden; /* 横スクロールを無効にする */
+        padding-bottom: 0;
+      }
+
+      .nav-links-new a {
+        font-size: 0.8rem; /* モバイルでのリンクのフォントサイズ */
+        padding: 0.5rem 1rem; /* パディングを調整 */
+        border: none; /* ボーダーをなくす */
+        width: 100%; /* 幅を100%に */
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
+  <nav class="new-main-nav">
+    <div class="nav-container">
+      <div class="nav-left-content">
+        <img src="https://i.imgur.com/2QKsuiR.jpeg" alt="探究塾ぱ～ぱす ロゴ" class="nav-logo-new">
+        <div class="nav-title-group-new">
+          <span class="nav-main-title-new">HIRAKATA JUNIOR GAME SHOW 2025</span>
+          <span class="nav-sub-title-new">Presented by 探究塾ぱ～ぱす</span>
+        </div>
+      </div>
+      <div class="hamburger-menu"> <!-- ハンバーガーアイコン -->
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="nav-links-wrapper"> <!-- ナビゲーション項目を囲むラッパー -->
+        <ul class="nav-links-new">
+          <li><a href="#overview">イベント概要</a></li>
+          <li><a href="#schedule">スケジュール</a></li>
+          <li><a href="#mentors">ゲストメンター</a></li>
+          <li><a href="#organizer">主催</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#entry">参加申し込み</a></li>
+          <li><a href="#volunteer">ボランティア</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
   <div id="loading-screen">
     <div class="spinner"></div>
     <p>LOADING...</p>
@@ -747,6 +1007,16 @@
 
     audio.addEventListener('ended', setLabel);
     setLabel();
+
+    // ハンバーガーメニューのJavaScript
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navLinksWrapper = document.querySelector('.nav-links-wrapper');
+
+    if (hamburgerMenu && navLinksWrapper) {
+      hamburgerMenu.addEventListener('click', () => {
+        navLinksWrapper.classList.toggle('active');
+      });
+    }
   });
 </script>
 
@@ -763,6 +1033,7 @@
         <h1 class="line2">JUNIOR GAME SHOW</h1>
         <h1 class="line3">2025</h1>
       </div>
+      <p class="presented-by">Presented by 探究塾ぱ～ぱす</p>
       <p>未来のゲームクリエイター、集え。<br>枚方から始まる、新たな創造の物語。</p>
       <a href="https://forms.gle/Th8XCFDXKgK85qFq5" class="btn" target="_blank" rel="noopener noreferrer">今すぐ申し込む</a>
       <button id="playBGM" class="btn" style="margin-top: 1rem;">BGMを再生</button>
@@ -770,7 +1041,7 @@
   </header>
 
   <!-- Event Overview -->
-  <section class="section">
+  <section class="section" id="overview">
     <div class="container">
       <h2>EVENT OVERVIEW</h2>
       <div class="cards">
@@ -845,7 +1116,7 @@
   </section>
 
   <!-- Program Schedule -->
-  <section class="section">
+  <section class="section" id="schedule">
     <div class="container">
       <h2>SCHEDULE</h2>
       <div class="timeline">
@@ -854,6 +1125,7 @@
             <h3>10/5 [SUN] - 開会式</h3>
             <p>元任天堂のトップクリエイター木村眞人さんによる講演でスタート！ここで一緒にゲームを作るチームが決まるぞ。</p>
             <p class="location">場所：探究塾ぱ～ぱす教室</p>
+            <p class="location">時間：10:30～12:30</p>
           </div>
         </div>
         <div class="timeline-event">
@@ -861,6 +1133,7 @@
             <h3>10/12 [SUN] - アイデア会議＆ゲーム制作開始</h3>
             <p>どんなゲームを作るか、みんなでアイデアを出し合い、いよいよゲーム制作を開始します。自分の身の回りを探検して、面白いゲームのタネを見つけよう。</p>
             <p class="location">場所：探究塾ぱ～ぱす教室</p>
+            <p class="location">時間：10:30～12:30</p>
           </div>
         </div>
         <div class="timeline-event">
@@ -868,6 +1141,7 @@
             <h3>10/18[SAT] - 予備日（自由参加）</h3>
             <p>ゲーム制作の進捗に合わせて、自由に制作を進められる予備日です。講師たちからのアドバイスも受けられます。</p>
             <p class="location">場所：探究塾ぱ～ぱす教室</p>
+            <p class="location">時間：10:30～12:30</p>
           </div>
         </div>
         <div class="timeline-event">
@@ -875,6 +1149,7 @@
             <h3>10/19[SUN] - ゲーム制作タイム</h3>
             <p>特別講師たちから直接アドバイスをもらいながら、世界に１つだけのゲームを完成させよう。</p>
             <p class="location">場所：探究塾ぱ～ぱす教室</p>
+            <p class="location">時間：10:30～12:30</p>
           </div>
         </div>
         <div class="timeline-event">
@@ -882,6 +1157,7 @@
             <h3>10/25 [SAT] - 予備日（自由参加）</h3>
             <p>発表会に向けた最終調整や、プレゼンテーションの練習など、自由に活用できる予備日です。</p>
             <p class="location">場所：探究塾ぱ～ぱす教室</p>
+            <p class="location">時間：10:30～12:30</p>
           </div>
         </div>
         <div class="timeline-event">
@@ -889,6 +1165,7 @@
             <h3>10/26 [SUN] - ゲームショウ本番！</h3>
             <p>君が作ったゲームを、たくさんの人の前で発表する日！最高の作品を披露して、みんなを驚かせよう！</p>
             <p class="location">場所：南部生涯学習市民センターイベントホール(仮)</p>
+            <p class="location">時間：9:00～12:30 (準備片付け含む)<br>開会 10:00 / 閉会 12:00</p>
           </div>
         </div>
       </div>
@@ -896,7 +1173,7 @@
   </section>
 
   <!-- Guest Mentors -->
-  <section class="section">
+  <section class="section" id="mentors">
     <div class="container">
       <h2>GUEST MENTORS</h2>
       <div class="cards">
@@ -918,9 +1195,10 @@
   
 
   <!-- Organizer Introduction -->
-  <section class="section">
+  <section class="section" id="organizer">
     <div class="container">
       <h2>主催：探究塾ぱ〜ぱす</h2>
+      <img src="https://i.imgur.com/2QKsuiR.jpeg" alt="探究塾ぱ〜ぱす ロゴ" style="display: block; margin: 2rem auto; max-width: 300px; border-radius: 8px;">
       <div class="cards">
         <div class="card">
           <h3>「なぜ？」を深める学びの場</h3>
@@ -976,6 +1254,8 @@
         <p class="fee-label">参加費用</p>
         <p class="fee-price">15,000円<span class="tax-included">（税込）</span></p>
         <p class="limited-offer">先着20名限定!!</p>
+        <p class="limited-offer-countdown">残り <span id="remaining-spots">15</span> 名</p>
+        <p class="deadline-note">申し込み締め切り：9月5日(金)まで</p>
         <p class="fee-note">ゲームの魅力を知り尽くしたプロ講師による直接指導、機材レンタル費、施設利用料 全て込み</p>
       </div>
       <p>募集するのは、ゲームが大好きな小学3年生から中学3年生までの君！パソコンで動くゲームはもちろん、友達とすぐに遊べるカードゲームやボードゲーム作りに挑戦したい君の応募を待ってるよ。人気だから、急いで応募してね！</p>
