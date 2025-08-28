@@ -842,9 +842,10 @@
     /* レスポンシブ対応 */
     @media (max-width: 768px) {
       .new-main-nav .nav-container {
-        flex-direction: column; /* スマホでは縦並び */
-        align-items: flex-start; /* 左寄せ */
-        gap: 0.5rem; /* 縦方向の間隔 */
+        flex-direction: row; /* スマホでは横並び */
+        justify-content: space-between; /* 左右に配置 */
+        align-items: center; /* 垂直方向中央揃え */
+        /* gap: 0.5rem; を削除 */
       }
 
       .nav-links-new {
@@ -898,6 +899,7 @@
     @media (max-width: 768px) {
       .hamburger-menu {
         display: flex; /* モバイルで表示 */
+        margin-left: auto; /* 右端に配置 */
       }
 
       .nav-links-wrapper {
@@ -950,11 +952,6 @@
           <span class="nav-sub-title-new">Presented by 探究塾ぱ～ぱす</span>
         </div>
       </div>
-      <div class="hamburger-menu"> <!-- ハンバーガーアイコン -->
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
       <div class="nav-links-wrapper"> <!-- ナビゲーション項目を囲むラッパー -->
         <ul class="nav-links-new">
           <li><a href="#overview">イベント概要</a></li>
@@ -965,6 +962,11 @@
           <li><a href="#entry">参加申し込み</a></li>
           <li><a href="#volunteer">ボランティア</a></li>
         </ul>
+      </div>
+      <div class="hamburger-menu"> <!-- ハンバーガーアイコン -->
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
       </div>
     </div>
   </nav>
